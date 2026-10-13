@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ali Hamdan</title>
+  <meta name="description" content="Ali Hamdan - student, mathematician, robotics educator and electronics hobbyist from Beirut."/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ice:#e8f4fd;--sky:#1a6fa8;--deep:#0d3a5c;--snow:#f5f9fc;
+      --accent:#2196c4;--text:#1a2a35;--muted:#5a7a8a;
+      --card-bg:rgba(255,255,255,0.92);--border:rgba(26,111,168,0.15);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:var(--snow);color:var(--text);overflow-x:hidden}
+
+    /* ICONS (inline SVG, drawn in the current text colour) */
+    .ico{width:1em;height:1em;display:block;flex-shrink:0;fill:none;stroke:currentColor;
+      stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+    /* RICH TEXT (links and bold written inside the JSON) */
+    .rich a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;
+      text-decoration-thickness:1px;transition:color .2s}
+    .rich a:hover{color:var(--deep)}
+    .rich strong{color:var(--text);font-weight:500}
+    .rich p+p{margin-top:1em}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:60px;
+      display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s}
+    nav.scrolled,nav.open{background:rgba(13,58,92,0.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.2)}
+    .nav-logo{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:700;
+      color:white;text-decoration:none;letter-spacing:.5px}
+    .nav-links{display:flex;gap:20px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.72rem;
+      letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover{color:white}
+    .nav-toggle{display:none;background:none;border:0;color:white;font-size:1.6rem;cursor:pointer;padding:6px}
+
+    /* BANNER */
+    .banner{position:relative;width:100%;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;background:var(--deep)}
+    .banner-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.82)}
+    .banner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,
+      rgba(10,30,50,.1) 0%,rgba(10,30,50,0) 40%,rgba(10,30,50,.55) 80%,rgba(10,30,50,.85) 100%)}
+    .hero{position:relative;z-index:2;width:100%;padding:0 6vw 60px;display:flex;align-items:flex-end;gap:32px}
+    .profile-img{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;
+      border:3px solid rgba(255,255,255,.85);box-shadow:0 8px 32px rgba(0,0,0,.3);flex-shrink:0}
+    .hero-text h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.4rem,5vw,4.2rem);
+      font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.05;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+    .hero-roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .role-tag{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+      color:rgba(255,255,255,.9);background:rgba(255,255,255,.15);backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:20px}
+    .scroll-hint{position:absolute;bottom:18px;right:6vw;z-index:2;color:rgba(255,255,255,.6);
+      font-size:.72rem;letter-spacing:2px;text-transform:uppercase;animation:pulse 2s infinite;
+      display:flex;align-items:center;gap:6px}
+    .scroll-hint .ico{font-size:1rem}
+    @keyframes pulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+
+    /* SECTIONS */
+    section{padding:90px 6vw;scroll-margin-top:60px}
+    section:nth-child(even){background:var(--ice)}
+    section.intro{padding:0;scroll-margin-top:0}
+    .about{padding:90px 6vw}
+    .section-label{font-size:.68rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;
+      color:var(--accent);margin-bottom:8px}
+    .section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);
+      font-weight:700;color:var(--deep);margin-bottom:48px;line-height:1.1}
+
+    /* ABOUT */
+    .about-text{max-width:720px;font-size:1.05rem;line-height:1.85;color:var(--muted);font-weight:300}
+    .about-text strong{color:var(--text);font-weight:500}
+
+    /* SKILLS */
+    .skills-grid{display:flex;flex-wrap:wrap;gap:12px}
+    .skill-pill{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;
+      border:1.5px solid var(--border);background:var(--card-bg);font-size:.88rem;
+      color:var(--deep);transition:all .25s;box-shadow:0 2px 8px rgba(26,111,168,.06)}
+    .skill-pill:hover{border-color:var(--accent);background:white;transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(26,111,168,.15)}
+    .skill-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+    /* HSCROLL shared */
+    .hscroll-wrap{margin:0 -6vw;padding:0 6vw}
+    .hscroll{display:flex;gap:24px;overflow-x:auto;padding-bottom:16px;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab}
+    .hscroll:active{cursor:grabbing}
+    .hscroll.dragging{scroll-snap-type:none;user-select:none}
+    .hscroll img{-webkit-user-drag:none}
+    .hscroll::-webkit-scrollbar{height:4px}
+    .hscroll::-webkit-scrollbar-track{background:transparent}
+    .hscroll::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+    /* PUBLISHED WORKS */
+    .pub-card{flex-shrink:0;width:260px;scroll-snap-align:start;background:var(--card-bg);
+      border:1px solid var(--border);border-radius:16px;overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .25s,box-shadow .25s;cursor:pointer}
+    .pub-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(26,111,168,.15)}
+    .pub-cover{width:100%;height:200px;object-fit:cover;object-position:center top;display:block}
+    .pub-body{padding:18px 16px 20px}
+    .pub-title{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:700;
+      color:var(--deep);margin-bottom:8px;line-height:1.3}
+    .pub-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:10px}
+    .pub-date{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:500}
+    .pub-btn{display:inline-block;margin-top:12px;padding:7px 16px;border-radius:999px;
+      background:var(--deep);color:white;font-size:.75rem;font-weight:500;
+      text-decoration:none;transition:background .2s}
+    .pub-btn:hover{background:var(--accent)}
+
+    /* GOOGLE DRIVE */
+    .drive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:860px}
+    .drive-folder{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:14px;
+      text-decoration:none;border:1.5px solid transparent;transition:all .25s;
+      box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .drive-folder:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.12);border-color:rgba(255,255,255,.5)}
+    .folder-icon{font-size:2rem;flex-shrink:0;line-height:1;color:var(--deep)}
+    .folder-info h4{font-size:.95rem;font-weight:500;color:var(--deep);margin-bottom:2px}
+    .folder-info p{font-size:.75rem;color:var(--muted)}
+
+    /* ACHIEVEMENTS */
+    .ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+    .ach-card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+      padding:22px 20px;display:flex;gap:14px;align-items:flex-start;
+      box-shadow:0 2px 12px rgba(0,0,0,.05);transition:transform .2s,box-shadow .2s}
+    .ach-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,111,168,.12)}
+    .ach-icon{font-size:1.6rem;flex-shrink:0;line-height:1;color:var(--deep)}
+    .ach-content h4{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:700;
+      color:var(--deep);margin-bottom:4px}
+    .ach-content p{font-size:.78rem;color:var(--muted);line-height:1.55}
+
+    /* LAB TOP (also used by Science Anecdotes and Collaboration) */
+    .lab-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:60px}
+    .lab-top:last-child{margin-bottom:0}
+    .lab-top.no-img{grid-template-columns:1fr}
+    .lab-top.no-img .lab-desc{max-width:720px}
+    .lab-photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.15)}
+    .lab-photo.contain{object-fit:contain;background:#fff;border:1px solid var(--border);
+      padding:8%;max-width:420px;justify-self:center}
+    .lab-desc{font-size:1rem;line-height:1.85;color:var(--muted)}
+    .lab-desc strong{color:var(--text);font-weight:500}
+
+    /* PROJECTS HORIZONTAL SCROLL */
+    .proj-card{flex-shrink:0;width:240px;scroll-snap-align:start;border-radius:16px;overflow:hidden;
+      position:relative;box-shadow:0 4px 20px rgba(0,0,0,.12);transition:transform .25s,box-shadow .25s;
+      cursor:default;display:block;text-decoration:none}
+    a.proj-card{cursor:pointer}
+    .proj-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 40px rgba(0,0,0,.22)}
+    .proj-card img{width:100%;height:220px;object-fit:cover;display:block}
+    .proj-label{position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(transparent,rgba(13,58,92,.88));
+      color:white;font-size:.78rem;font-weight:500;letter-spacing:.3px;
+      padding:24px 12px 10px;text-align:center}
+    .proj-placeholder{background:var(--ice);border:2px dashed var(--border);
+      display:flex;align-items:center;justify-content:center}
+    .proj-placeholder-inner{text-align:center;color:var(--muted);font-size:.82rem;padding:20px}
+    .ph-ico{font-size:2rem;margin-bottom:8px;color:var(--deep);display:flex;justify-content:center}
+
+    /* SOCIAL */
+    .social-card{flex-shrink:0;width:200px;scroll-snap-align:start;background:var(--card-bg);
+      border:1px solid var(--border);border-radius:16px;overflow:hidden;
+      text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.07);
+      transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+    .social-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(26,111,168,.18)}
+    .social-card.soon{opacity:.5;cursor:default}
+    .social-card.soon:hover{transform:none;box-shadow:0 4px 20px rgba(0,0,0,.07)}
+    .social-preview{width:100%;height:140px;display:flex;align-items:center;justify-content:center;
+      font-size:3rem;background:var(--ice);color:var(--deep)}
+    .social-label{padding:12px 16px;text-align:center}
+    .social-name{font-size:.8rem;font-weight:500;color:var(--deep);letter-spacing:.5px}
+    .social-handle{font-size:.7rem;color:var(--muted);margin-top:2px}
+    .coming-soon{font-size:.65rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+    /* CONTACT */
+    .contact-desc{font-size:1rem;color:var(--muted);max-width:500px;line-height:1.7;margin-bottom:24px}
+    .email-link{display:inline-flex;align-items:center;gap:12px;padding:16px 32px;
+      background:var(--deep);color:white;border-radius:12px;text-decoration:none;
+      font-size:1rem;transition:background .25s,transform .2s;box-shadow:0 4px 20px rgba(13,58,92,.25)}
+    .email-link .ico{font-size:1.25rem}
+    .email-link:hover{background:var(--accent);transform:translateY(-2px)}
+
+    footer{background:var(--deep);color:rgba(255,255,255,.45);text-align:center;
+      padding:28px 6vw;font-size:.75rem;letter-spacing:1px}
+
+    /* STATES */
+    .loading{min-height:100vh;display:flex;align-items:center;justify-content:center;
+      color:var(--muted);font-size:.9rem;letter-spacing:2px;text-transform:uppercase;padding:0 6vw;text-align:center}
+    .load-error{max-width:640px;margin:0 auto;padding:140px 6vw 80px;color:var(--text);line-height:1.7}
+    .load-error h2{font-family:"Cormorant Garamond",serif;color:var(--deep);font-size:2rem;margin-bottom:12px}
+    .load-error code{background:var(--ice);padding:2px 6px;border-radius:6px;font-size:.85rem}
+    .load-error pre{background:var(--ice);padding:12px 14px;border-radius:10px;margin:12px 0;
+      font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+    .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:200;
+      background:var(--deep);color:white;padding:12px 22px;border-radius:999px;font-size:.82rem;
+      box-shadow:0 8px 30px rgba(0,0,0,.25);max-width:90vw;text-align:center}
+    @keyframes flash{0%,60%{box-shadow:0 0 0 4px var(--accent)}100%{box-shadow:0 0 0 4px transparent}}
+    .flash{animation:flash 2.2s ease-out}
+
+    @media(max-width:1000px){
+      .nav-toggle{display:block}
+      .nav-links{position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;
+        background:rgba(13,58,92,.98);padding:6px 6vw 16px;display:none}
+      nav.open .nav-links{display:flex}
+      .nav-links a{display:block;padding:12px 0;font-size:.8rem}
+    }
+    @media(max-width:700px){
+      .hero{flex-direction:column;align-items:flex-start;gap:16px}
+      .profile-img{width:90px;height:90px}
+      .ach-grid{grid-template-columns:1fr}
+      .drive-grid{grid-template-columns:1fr}
+      .lab-top{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV (links are generated from content.json) -->
+<nav id="nav">
+  <a href="#intro" class="nav-logo" id="navLogo">AliHamdan.exe</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <ul class="nav-links" id="navLinks"></ul>
+</nav>
+
+<!-- ALL SECTIONS ARE BUILT FROM content.json -->
+<main id="app"><div class="loading">Loading</div></main>
+<noscript><p style="padding:140px 6vw;text-align:center">This page needs JavaScript to load its content.</p></noscript>
+
+<footer id="footer"><p></p></footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- icon library (24x24, drawn with the current colour) ---------- */
+  const ICONS = {
+    trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/>',
+    medal: '<circle cx="12" cy="15" r="5"/><path d="M8 3l2.5 6M16 3l-2.5 6"/>',
+    award: '<circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/>',
+    star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z"/>',
+    book: '<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z"/><path d="M5 17a3 3 0 0 1 3-3h11"/>',
+    books: '<path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M15.5 6l3.6-1 3.2 14.5-3.6 1z"/>',
+    sigma: '<path d="M18 5H6l6 7-6 7h12"/>',
+    calculator: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/>',
+    cap: '<path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5M22 9v6"/>',
+    robot: '<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M12 4h.01M9.5 16.5h5M3 12v3M21 12v3"/><circle cx="9.5" cy="13" r="1.2"/><circle cx="14.5" cy="13" r="1.2"/>',
+    chip: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/>',
+    car: '<path d="M3 15v-3l2.2-5.2A1.5 1.5 0 0 1 6.6 6h10.8a1.5 1.5 0 0 1 1.4.8L21 12v3z"/><path d="M3 12h18"/><circle cx="7.5" cy="16" r="2"/><circle cx="16.5" cy="16" r="2"/>',
+    doc: '<path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>',
+    news: '<path d="M5 4h12v16H7a2 2 0 0 1-2-2V4z"/><path d="M17 8h3v10a2 2 0 0 1-2 2M8 8h6M8 12h6M8 16h4"/>',
+    school: '<path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5M12 5V2"/>',
+    tent: '<path d="M3 20L12 5l9 15z"/><path d="M12 5v15M9.5 20l2.5-5 2.5 5"/>',
+    flask: '<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/>',
+    chess: '<circle cx="12" cy="6.5" r="3"/><path d="M10 9.5c0 3-1.5 4.5-2.5 6.5h9c-1-2-2.5-3.5-2.5-6.5M6.5 21l1-5h9l1 5z"/>',
+    cube: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>',
+    camera: '<path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+    linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7h.01M12 17v-6.5M12 13.5c0-1.7 1.3-3 3-3s3 1.3 3 3V17"/>',
+    youtube: '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
+    at: '<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    folder: '<path d="M3 6a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+    users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 14.5a6 6 0 0 1 3 5.5"/>',
+    code: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+    bolt: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    pencil: '<path d="M4 20l4-1L19.5 7.5a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14.5 6.5l3 3"/>',
+    ruler: '<path d="M3 17L17 3l4 4L7 21H3z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>',
+    lightbulb: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.3 1 2.1h5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+    play: '<path d="M8 5v14l11-7z"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.7"/><path d="M21 16l-5-5-8 8"/>',
+    arrowDown: '<path d="M12 5v14M6 13l6 6 6-6"/>'
+  };
+  const ico = name => {
+    if (!ICONS[name]) { console.warn('[portfolio] unknown icon "' + name + '" - using "star". Available:', Object.keys(ICONS).join(', ')); name = 'star'; }
+    return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICONS[name] + '</svg>';
+  };
+
+  /* ---------- helpers ---------- */
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const slug = s => String(s == null ? '' : s).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const itemSlug = (o, i) => slug(o.id || o.title || o.name) || ('item-' + (i + 1));
+  const isHttp = u => /^https?:/i.test(u);
+
+  let SITE = {};
+
+  function safeUrl(u) {
+    u = String(u == null ? '' : u).trim();
+    if (!u) return '#';
+    if (/^(https?:\/\/|mailto:|tel:|#|\/|\.\.?\/)/i.test(u)) return u;
+    if (/^[a-z][a-z0-9+.-]*:/i.test(u)) return '#';                       /* blocks javascript:, data: ... */
+    if (/^(www\.)?[\w-]+(\.[\w-]+)*\.(com|org|net|io|edu|dev|app|co|me|info|lb)([/?#]|$)/i.test(u)) return 'https://' + u;
+    return u;                                                              /* relative file such as docs/book.pdf */
+  }
+  const linkAttrs = href => ' href="' + esc(href) + '"' + (isHttp(href) ? ' target="_blank" rel="noopener"' : '');
+
+  /* tiny markup for descriptions: **bold**, [text](link), {email} */
+  function rich(s) {
+    let t = esc(s).replace(/\{email\}/g, esc(SITE.email || ''));
+    t = t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, label, url) => {
+      const href = safeUrl(url);
+      return '<a' + linkAttrs(href) + '>' + label + '</a>';
+    });
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    return t.replace(/\n/g, '<br>');
+  }
+  const paras = v => (Array.isArray(v) ? v : [v]).filter(x => x !== undefined && x !== null && x !== '').map(x => '<p>' + rich(x) + '</p>').join('');
+
+  const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#e8f4fd"/>' +
+    '<g transform="translate(76 76) scale(2)" fill="none" stroke="#0d3a5c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".55">' +
+    ICONS.image + '</g></svg>');
+
+  const imgSrc = f => {
+    f = String(f).trim();
+    if (/^(https?:)?\/\//i.test(f) || f.charAt(0) === '/') return f;
+    return (SITE.imageFolder || 'images/') + encodeURI(f.replace(/^\.?\/+/, ''));
+  };
+  /* The original file is always used as-is: nothing is resized or recompressed. */
+  function img(file, o) {
+    o = o || {};
+    const src = file ? imgSrc(file) : PLACEHOLDER;
+    const pos = o.pos && /^[\w% .-]+$/.test(o.pos) ? ' style="object-position:' + esc(o.pos) + '"' : '';
+    return '<img' + (o.cls ? ' class="' + o.cls + '"' : '') + ' src="' + esc(src) + '" alt="' + esc(o.alt || '') + '"' + pos +
+      (o.eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async"' + (o.drag ? ' draggable="false"' : '') + '>';
+  }
+  const colorOk = c => /^(#[0-9a-f]{3,8}|[a-z]+|rgba?\([\d\s,.%]+\)|var\(--[\w-]+\))$/i.test(String(c || '').trim()) ? String(c).trim() : 'var(--ice)';
+  const head = s => (s.label ? '<div class="section-label">' + esc(s.label) + '</div>' : '') + (s.title ? '<div class="section-title">' + esc(s.title) + '</div>' : '');
+  const dataSlug = (o, i) => ' data-slug="' + esc(itemSlug(o, i)) + '"';
+
+  /* ---------- one renderer per section "type" ---------- */
+  const R = {
+    intro(s) {
+      const roles = (s.roles || []).map(r => '<span class="role-tag">' + esc(r) + '</span>').join('');
+      return '<div class="banner">' +
+        img(s.banner, { cls: 'banner-img', alt: (s.name || '') + ' banner', pos: s.bannerPosition, eager: true }) +
+        '<div class="banner-overlay"></div>' +
+        '<div class="hero">' +
+        (s.profile ? img(s.profile, { cls: 'profile-img', alt: s.name, pos: s.profilePosition, eager: true }) : '') +
+        '<div class="hero-text"><h1>' + esc(s.name) + '</h1><div class="hero-roles">' + roles + '</div></div></div>' +
+        '<div class="scroll-hint">' + ico('arrowDown') + '<span>scroll</span></div></div>' +
+        '<div class="about">' + head(s) + '<div class="about-text rich">' + paras(s.text) + '</div></div>';
+    },
+
+    skills(s) {
+      return head(s) + '<div class="skills-grid">' +
+        (s.items || []).map(t => '<div class="skill-pill"><span class="skill-dot"></span>' + esc(t) + '</div>').join('') + '</div>';
+    },
+
+    achievements(s) {
+      return head(s) + '<div class="ach-grid">' + (s.items || []).map((a, i) =>
+        '<div class="ach-card"' + dataSlug(a, i) + '><div class="ach-icon">' + ico(a.icon || 'star') + '</div>' +
+        '<div class="ach-content"><h4>' + esc(a.title) + '</h4><p class="rich">' + rich(a.text) + '</p></div></div>').join('') + '</div>';
+    },
+
+    /* feature = photo/logo + description. Add "projects" to get the scrolling gallery (the Lab). */
+    feature(s) {
+      const hasImg = !!s.image;
+      const photo = hasImg ? img(s.image, { cls: 'lab-photo' + (s.imageFit === 'contain' ? ' contain' : ''), alt: s.imageAlt || s.title, pos: s.position }) : '';
+      let gallery = '';
+      if (Array.isArray(s.projects) && s.projects.length) {
+        const cards = s.projects.map((p, i) => {
+          const tag = p.link ? 'a' : 'div';
+          const href = p.link ? linkAttrs(safeUrl(p.link)) : '';
+          return '<' + tag + ' class="proj-card"' + href + dataSlug(p, i) + '>' +
+            img(p.image, { alt: p.alt || p.title, pos: p.position, drag: true }) +
+            '<div class="proj-label">' + esc(p.title) + '</div></' + tag + '>';
+        }).join('');
+        const more = s.moreSoon ? '<div class="proj-card proj-placeholder"><div class="proj-placeholder-inner"><div class="ph-ico">' + ico('image') + '</div><div>' + esc(s.moreSoon) + '</div></div></div>' : '';
+        gallery = '<div class="section-label" style="margin-bottom:20px">' + esc(s.galleryLabel || 'Projects Gallery') + '</div>' +
+          '<div class="hscroll-wrap"><div class="hscroll">' + cards + more + '</div></div>';
+      }
+      return head(s) + '<div class="lab-top' + (hasImg ? '' : ' no-img') + '">' + photo +
+        '<div class="lab-desc rich">' + paras(s.description) + '</div></div>' + gallery;
+    },
+
+    publications(s) {
+      return head(s) + '<div class="hscroll-wrap"><div class="hscroll">' + (s.items || []).map((p, i) => {
+        const bt = p.buttonText === undefined ? 'Request a Copy' : p.buttonText;
+        const link = safeUrl(p.link || '#contact');
+        return '<div class="pub-card"' + dataSlug(p, i) + '>' +
+          img(p.image, { cls: 'pub-cover', alt: p.alt || p.title, pos: p.position, drag: true }) +
+          '<div class="pub-body"><div class="pub-title">' + esc(p.title) + '</div>' +
+          (p.description ? '<div class="pub-desc rich">' + rich(p.description) + '</div>' : '') +
+          (p.date ? '<div class="pub-date">' + esc(p.date) + '</div>' : '') +
+          (bt ? '<a class="pub-btn"' + linkAttrs(link) + '>' + esc(bt) + '</a>' : '') +
+          '</div></div>';
+      }).join('') + '</div></div>';
+    },
+
+    resources(s) {
+      return head(s) + '<div class="drive-grid">' + (s.items || []).map((r, i) =>
+        '<a class="drive-folder"' + linkAttrs(safeUrl(r.link)) + dataSlug(r, i) + ' style="background:' + esc(colorOk(r.color)) + '">' +
+        '<div class="folder-icon">' + ico(r.icon || 'folder') + '</div>' +
+        '<div class="folder-info"><h4>' + esc(r.title) + '</h4><p>' + esc(r.text) + '</p></div></a>').join('') + '</div>';
+    },
+
+    social(s) {
+      return head(s) + '<div class="hscroll-wrap"><div class="hscroll">' + (s.items || []).map((x, i) => {
+        const inner = '<div class="social-preview">' + ico(x.icon || 'globe') + '</div><div class="social-label"><div class="social-name">' + esc(x.name) + '</div>' +
+          (x.comingSoon ? '<div class="coming-soon">Coming Soon</div>' : (x.handle ? '<div class="social-handle">' + esc(x.handle) + '</div>' : '')) + '</div>';
+        return (x.comingSoon || !x.link)
+          ? '<div class="social-card soon"' + dataSlug(x, i) + '>' + inner + '</div>'
+          : '<a class="social-card"' + linkAttrs(safeUrl(x.link)) + dataSlug(x, i) + '>' + inner + '</a>';
+      }).join('') + '</div></div>';
+    },
+
+    contact(s) {
+      const email = s.email || SITE.email || '';
+      return head(s) + '<div class="contact-desc rich">' + paras(s.text) + '</div>' +
+        '<a class="email-link" href="mailto:' + esc(email) + '">' + ico('mail') + '<span>' + esc(email) + '</span></a>';
+    }
+  };
+
+  /* ---------- page boot ---------- */
+  const app = document.getElementById('app');
+  const nav = document.getElementById('nav');
+  const ALIAS = {};
+
+  function showError(err) {
+    app.innerHTML = '<div class="load-error"><h2>The page content could not be loaded</h2>' +
+      '<p>The page could not read <code>content.json</code>.</p><pre>' + esc(err && err.message ? err.message : err) + '</pre>' +
+      '<p>Common causes: a missing or extra comma or quote in <code>content.json</code> (paste it into a JSON validator to find the line), ' +
+      'or the file was opened by double-clicking <code>index.html</code>. Browsers block that, so view the deployed site or run ' +
+      '<code>python -m http.server</code> in the repo folder and open <code>http://localhost:8000</code>.</p></div>';
+  }
+
+  function toast(msg) {
+    const t = document.createElement('div');
+    t.className = 'toast'; t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 4500);
+  }
+
+  function go(behavior) {
+    let h = location.hash.slice(1);
+    if (!h || h.indexOf(':~:') === 0) return;
+    try { h = decodeURIComponent(h); } catch (e) { /* keep raw */ }
+    const parts = h.split('/');
+    const secId = ALIAS[slug(parts[0])];
+    if (!secId) { if (!document.getElementById(h)) toast('That link does not match any section of the page.'); return; }
+    const sec = document.getElementById(secId);
+    if (!sec) return;
+    let target = sec, isItem = false;
+    const itemKey = slug(parts.slice(1).join('/'));
+    if (itemKey) {
+      const it = Array.prototype.find.call(sec.querySelectorAll('[data-slug]'), n => n.getAttribute('data-slug') === itemKey);
+      if (it) { target = it; isItem = true; }
+    }
+    if (target.scrollIntoView) target.scrollIntoView(isItem ? { behavior: behavior, block: 'center', inline: 'center' } : { behavior: behavior, block: 'start' });
+    if (isItem) { target.classList.add('flash'); setTimeout(() => target.classList.remove('flash'), 2300); }
+  }
+
+  async function boot() {
+    let data;
+    try {
+      const res = await fetch('content.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('HTTP ' + res.status + ' while loading content.json');
+      data = await res.json();
+    } catch (err) { showError(err); return; }
+
+    SITE = data.site || {};
+    if (SITE.title) document.title = SITE.title;
+    if (SITE.metaDescription) { const m = document.querySelector('meta[name="description"]'); if (m) m.setAttribute('content', SITE.metaDescription); }
+    if (SITE.logoText) document.getElementById('navLogo').textContent = SITE.logoText;
+    if (SITE.footer) document.querySelector('#footer p').textContent = SITE.footer;
+
+    const seen = {};
+    const sections = (data.sections || []).filter(s => {
+      if (!s || !s.id) { console.warn('[portfolio] a section has no "id" - skipped'); return false; }
+      if (seen[s.id]) { console.warn('[portfolio] duplicate section id "' + s.id + '" - skipped'); return false; }
+      if (!R[s.type]) { console.warn('[portfolio] section "' + s.id + '" has unknown type "' + s.type + '" - skipped'); return false; }
+      seen[s.id] = true; return true;
+    });
+
+    sections.forEach(s => { ALIAS[slug(s.id)] = s.id; (s.aliases || []).forEach(a => { ALIAS[slug(a)] = s.id; }); });
+
+    document.getElementById('navLinks').innerHTML = sections.filter(s => s.nav)
+      .map(s => '<li><a href="#' + esc(s.id) + '">' + esc(s.nav) + '</a></li>').join('');
+
+    app.innerHTML = sections.map(s =>
+      '<section id="' + esc(s.id) + '"' + (s.type === 'intro' ? ' class="intro"' : '') + '>' + R[s.type](s) + '</section>').join('');
+
+    /* fade-in on scroll */
+    const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!calm && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+      }), { threshold: 0.08 });
+      document.querySelectorAll('section').forEach(sec => {
+        sec.style.opacity = '0'; sec.style.transform = 'translateY(24px)';
+        sec.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        io.observe(sec);
+      });
+    }
+
+    requestAnimationFrame(() => go('instant'));
+    window.addEventListener('hashchange', () => go('smooth'));
+  }
+
+  /* ---------- global behaviour ---------- */
+  const setScrolled = () => nav.classList.toggle('scrolled', window.scrollY > 80);
+  window.addEventListener('scroll', setScrolled); setScrolled();
+
+  const toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', () => toggle.setAttribute('aria-expanded', String(nav.classList.toggle('open'))));
+  document.getElementById('navLinks').addEventListener('click', e => {
+    if (e.target.closest('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  /* a missing photo shows a quiet placeholder instead of a broken-image icon */
+  document.addEventListener('error', e => {
+    const t = e.target;
+    if (t && t.tagName === 'IMG' && !t.dataset.fb) {
+      t.dataset.fb = '1';
+      console.warn('[portfolio] image not found:', t.getAttribute('src'), '- check the file name in content.json and the images folder');
+      t.src = PLACEHOLDER;
+    }
+  }, true);
+
+  /* drag-to-scroll for the horizontal strips (click is ignored after a drag) */
+  let drag = null, suppress = false;
+  document.addEventListener('mousedown', e => {
+    const el = e.target.closest && e.target.closest('.hscroll');
+    if (!el || e.button !== 0) return;
+    drag = { el: el, x: e.pageX, left: el.scrollLeft, moved: false };
+  });
+  document.addEventListener('mousemove', e => {
+    if (!drag) return;
+    const dx = e.pageX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; drag.el.classList.add('dragging'); }
+    if (drag.moved) { e.preventDefault(); drag.el.scrollLeft = drag.left - dx * 1.5; }
+  });
+  document.addEventListener('mouseup', () => {
+    if (!drag) return;
+    const d = drag; drag = null;
+    d.el.classList.remove('dragging');
+    if (d.moved) { suppress = true; setTimeout(() => { suppress = false; }, 0); }
+  });
+  document.addEventListener('click', e => { if (suppress) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+  /* the whole book card acts like its button */
+  document.addEventListener('click', e => {
+    const card = e.target.closest && e.target.closest('.pub-card');
+    if (!card || e.target.closest('a')) return;
+    const b = card.querySelector('.pub-btn');
+    if (b) b.click();
+  });
+
+  boot();
+})();
+</script>
+</body>
+</html>
