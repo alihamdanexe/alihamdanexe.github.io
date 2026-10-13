@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex"/>
+  <title>Ali Hamdan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ice:#e8f4fd;--deep:#0d3a5c;--snow:#f5f9fc;--accent:#2196c4;--muted:#5a7a8a}
+    body{font-family:"DM Sans",sans-serif;background:var(--snow);color:var(--deep);min-height:100vh;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:6vw}
+    h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:10px}
+    p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:22px}
+    a{display:inline-block;padding:12px 28px;background:var(--deep);color:#fff;border-radius:12px;
+      text-decoration:none;font-size:.9rem;transition:background .25s}
+    a:hover{background:var(--accent)}
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Taking you there</h1>
+    <p>If nothing happens in a moment, use the button below.</p>
+    <a id="home" href="/">Go to the homepage</a>
+  </div>
+
+<script>
+/*
+  HOW THIS FILE WORKS
+  GitHub Pages shows this file for any address that does not exist, for example
+      https://YOUR-SITE/lab
+      https://YOUR-SITE/books/arduino-tutorials
+  This script turns that path into a link to a section of the main page
+      https://YOUR-SITE/#lab
+      https://YOUR-SITE/#books/arduino-tutorials
+  and index.html scrolls to it. The names that work (and their nicknames) are
+  the section "id" and "aliases" in content.json, so you never edit this file
+  when you add a section or an alias.
+
+  ONLY SETTING: BASE
+    "/"           -> your site is  https://USERNAME.github.io/   (repository named USERNAME.github.io, or a custom domain)
+    "/REPO-NAME/" -> your site is  https://USERNAME.github.io/REPO-NAME/
+*/
+var BASE = "/";
+
+(function () {
+  var path = location.pathname;
+  path = path.indexOf(BASE) === 0 ? path.slice(BASE.length) : path.replace(/^\/+/, "");
+
+  var parts = path.split("/").filter(Boolean).map(function (p) {
+    try { p = decodeURIComponent(p); } catch (e) { /* keep raw */ }
+    return p.toLowerCase().replace(/\.html?$/, "");
+  });
+
+  var target = parts.length ? BASE + "#" + parts.slice(0, 2).map(encodeURIComponent).join("/") : BASE;
+  document.getElementById("home").setAttribute("href", BASE);
+  location.replace(target);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+{
+  "site": {
+    "title": "Ali Hamdan",
+    "metaDescription": "Ali Hamdan - student, mathematician, robotics educator and electronics hobbyist from Beirut.",
+    "imageFolder": "images/",
+    "logoText": "AliHamdan.exe",
+    "email": "alihamdan.exe@gmail.com",
+    "footer": "© 2026 Ali Hamdan · All rights reserved"
+  },
+
+  "sections": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "nav": "Intro",
+      "aliases": ["home", "about", "top"],
+      "banner": "banner.jpg",
+      "bannerPosition": "center top",
+      "profile": "profile.webp",
+      "profilePosition": "center top",
+      "name": "Ali Hamdan",
+      "roles": ["Student", "Mathematician", "Robotics Educator", "Electronics Hobbyist"],
+      "label": "Who I Am",
+      "title": "A Brief Introduction",
+      "text": "I'm **Ali Hamdan**, a student from Beirut with a restless curiosity spanning mathematics, electronics, and robotics education. I've competed in international robotics finals, led 70+ robotics sessions at summer camps, tutored advanced calculus, and authored three technical publications, all while maintaining a straight-A academic record. I build things with my hands, explain things with clarity, and approach every problem like an engineer and a mathematician at once."
+    },
+
+    {
+      "id": "skills",
+      "type": "skills",
+      "nav": "Skills",
+      "label": "What I Do",
+      "title": "Skills",
+      "items": [
+        "Communication & Public Speaking",
+        "Programming (Python, C++, Arduino)",
+        "Mathematics Tutoring",
+        "Electronics Handwork",
+        "Robotics Teaching",
+        "Technical Writing (3 Published Works)",
+        "Latex Editor"
+      ]
+    },
+
+    {
+      "id": "achievements",
+      "type": "achievements",
+      "nav": "Achievements",
+      "aliases": ["awards", "track-record"],
+      "label": "Track Record",
+      "title": "Achievements",
+      "items": [
+        { "icon": "trophy", "title": "ARC 9 — 1st Place & International Qualifier", "text": "Won first place in Open Sumo and qualified for the Japanese International Finals." },
+        { "icon": "medal", "title": "WRO — 3rd Place & International Qualifier", "text": "Third place in Autonomous Driving Car and qualified for the Italian Finals." },
+        { "icon": "award", "title": "ARC 10 — 4th Place & Best Design Award", "text": "Placed 4th in Open Sumo while earning the Best Design Award." },
+        { "icon": "robot", "title": "ARC 5 — Makeblock Challenge Participant", "text": "Participated in the Makeblock challenge in 2019." },
+        { "icon": "medal", "title": "MC² — 3rd Place in Sumo Category", "text": "Third place at Al Mahdi Schools Robotics Competition." },
+        { "icon": "sigma", "title": "4th Best Math Student in Beirut", "text": "Ranked 4th out of 53 top mathematics students across Beirut." },
+        { "icon": "star", "title": "1,100,000+ Khan Academy Energy Points", "text": "Over one million points through consistent self-directed learning." },
+        { "icon": "mic", "title": "Public Speaking Contest Winner", "text": "Won a competitive public speaking contest." },
+        { "icon": "book", "title": "Straight-A Student", "text": "Perfect academic record throughout high school." },
+        { "icon": "tent", "title": "70 Robotics Sessions — AMA Summer Camp", "text": "Led sessions covering WeDo, Motor 3.0, and Arduino programming." },
+        { "icon": "flask", "title": "STEAM Table at Kalimat Branch Opening", "text": "Hosted a science and technology table at the opening ceremony." },
+        { "icon": "cube", "title": "Chess Player & Rubik's Cube Solver", "text": "Active chess player and Rubik's cube solver." }
+      ]
+    },
+
+    {
+      "id": "lab",
+      "type": "feature",
+      "nav": "Lab",
+      "aliases": ["projects", "my-lab", "projects-gallery"],
+      "label": "Behind the Scenes",
+      "title": "Welcome to My Lab",
+      "image": "lab-workspace.jpg",
+      "imageAlt": "Ali's Lab",
+      "description": "**This is where it all happens.** A dedicated electronics workspace built from scratch, stocked with breadboards, soldering stations, multimeters, microcontrollers, and whatever component the next project demands. Every robot, circuit, and prototype you see across this site passed through this bench. It's part workshop, part classroom, part thinking space.",
+      "galleryLabel": "Projects Gallery",
+      "projects": [
+        { "title": "ARC 9 Sumo Robot", "image": "lab-arc9-sumo.jpg" },
+        { "title": "Project Car", "image": "lab-project-car.jpg" },
+        { "title": "Transmitter V1", "image": "lab-transmitter-v1.jpg" },
+        { "title": "WRO Autonomous Car", "image": "lab-wro-autonomous-car.jpg" },
+        { "title": "5V Regulators", "image": "lab-5v-regulators.jpg" },
+        { "title": "Receiver V1", "image": "lab-receiver-v1.jpg" },
+        { "title": "ARC 10 Sumo Robot", "image": "lab-arc10-sumo.jpg" },
+        { "title": "Receiver V2", "image": "lab-receiver-v2.jpg" },
+        { "title": "Flight Computer V2", "image": "lab-flight-computer-v2.jpg" },
+        { "title": "Robotic Arm", "image": "lab-robotic-arm.jpg" }
+      ],
+      "moreSoon": "More coming soon"
+    },
+
+    {
+      "id": "works",
+      "type": "publications",
+      "nav": "Publications",
+      "aliases": ["books", "publications", "published-works", "books-and-published-works"],
+      "label": "Publications",
+      "title": "Books & Published Works",
+      "items": [
+        {
+          "title": "The Calculus Summary",
+          "image": "book-calculus-summary.jpg",
+          "description": "A complete summary of the 1,000+ page Thomas Calculus textbook, from function basics to advanced multivariable calculus.",
+          "date": "May 2026",
+          "buttonText": "Request a Copy",
+          "link": "#contact"
+        },
+        {
+          "title": "Arduino Tutorials",
+          "image": "book-arduino-tutorials.jpg",
+          "description": "A beginner-friendly guide covering the fundamentals of Arduino board development and embedded systems programming.",
+          "date": "2025",
+          "buttonText": "Request a Copy",
+          "link": "#contact"
+        },
+        {
+          "title": "Python Full Summary",
+          "image": "book-python-summary.jpg",
+          "description": "A condensed summary extracted from \"Python Crash Course\" — covering core concepts, data structures, and practical programming patterns.",
+          "date": "2024",
+          "buttonText": "Request a Copy",
+          "link": "#contact"
+        }
+      ]
+    },
+
+    {
+      "id": "anecdotes",
+      "type": "feature",
+      "nav": "Anecdotes",
+      "aliases": ["science-anecdotes", "science", "founder"],
+      "label": "Founder",
+      "title": "Founder of Science Anecdotes",
+      "image": "science-anecdotes-logo.png",
+      "imageAlt": "Science Anecdotes logo",
+      "imageFit": "contain",
+      "description": [
+        "**Write one line here about what Science Anecdotes is.** Then a few sentences about who it is for, what readers can find there, and why you started it.",
+        "Read it on [Science Anecdotes](https://scienceanecdotes.github.io)."
+      ]
+    },
+
+    {
+      "id": "resources",
+      "type": "resources",
+      "nav": "Resources",
+      "aliases": ["free-resources", "free", "downloads"],
+      "label": "Open Access",
+      "title": "Free Resources",
+      "items": [
+        { "icon": "books", "title": "Free Books & Papers", "text": "Open academic books and research papers", "link": "https://drive.google.com/drive/folders/1c9OWf2ksZ7qMzDYRmPfUsvNugJLJ1s-L", "color": "#e8f4fd" },
+        { "icon": "target", "title": "Kangaroo Math", "text": "Math Kangaroo competition resources", "link": "https://drive.google.com/drive/folders/12DDq2bzyZ05UzJVtvZd0PIpFJ24dQ0Ol", "color": "#d4edda" },
+        { "icon": "cap", "title": "Khan Academy", "text": "Notes and exercises from Khan Academy", "link": "https://drive.google.com/drive/folders/1_6zYiLx_scEFJiR1VnQM8ZPBl8GhMQ2K", "color": "#c8e6c9" },
+        { "icon": "sigma", "title": "Math Summaries", "text": "Condensed summaries of mathematics topics", "link": "https://drive.google.com/drive/folders/1mVblReHpn0RhUc5cYPhmiOlzuSOjxXiY", "color": "#d4edda" },
+        { "icon": "car", "title": "Project Car", "text": "Files and references for the autonomous car project", "link": "https://drive.google.com/drive/folders/1BgE2ycWwVBGRP6kkCXECtyrp0XJDWZZ3", "color": "#b3d9f2" },
+        { "icon": "pencil", "title": "SAT Resources", "text": "Study materials and practice for the SAT exam", "link": "https://drive.google.com/drive/folders/1z99sSgbam7FdcHxCP5VlLDOUVjYlsgKY", "color": "#c5d8f0" },
+        { "icon": "school", "title": "School Summaries", "text": "Subject summaries from school coursework", "link": "https://drive.google.com/drive/folders/1Oycee3017iGQeXjAwmGaGhHnZOn09Mvj", "color": "#fde8e8" }
+      ]
+    },
+
+    {
+      "id": "social",
+      "type": "social",
+      "nav": "Social",
+      "aliases": ["socials", "follow", "find-me"],
+      "label": "Find Me Online",
+      "title": "Social Pages",
+      "items": [
+        { "icon": "instagram", "name": "Instagram", "handle": "@alihamdan.exe", "link": "https://www.instagram.com/alihamdan.exe/?hl=en" },
+        { "icon": "linkedin", "name": "LinkedIn", "handle": "Ali Hamdan", "link": "https://www.linkedin.com/in/ali-hamdan-777941385" },
+        { "icon": "youtube", "name": "YouTube", "handle": "@alihamdanexe", "link": "https://www.youtube.com/@alihamdanexe" },
+        { "icon": "at", "name": "Threads", "comingSoon": true }
+      ]
+    },
+
+    {
+      "id": "collaboration",
+      "type": "feature",
+      "nav": "Collaborate",
+      "aliases": ["collaborate", "collab", "work-with-me"],
+      "label": "Work Together",
+      "title": "Collaboration",
+      "image": "collaboration.jpg",
+      "imageAlt": "Collaboration",
+      "description": [
+        "**Write here, in your own words, what kind of collaborations you are open to.** Mention the kind of people, projects or organisations you would like to work with.",
+        "If you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
+      ]
+    },
+
+    {
+      "id": "contact",
+      "type": "contact",
+      "nav": "Contact",
+      "aliases": ["contact-us", "email"],
+      "label": "Get In Touch",
+      "title": "Contact",
+      "text": "Interested in my published works, a robotics session, math tutoring, or just want to connect? Send me an email and I'll get back to you."
+    }
+  ]
+}
