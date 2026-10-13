@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Ali Hamdan",
-    "metaDescription": "Ali Hamdan - student, mathematician, robotics educator and electronics hobbyist from Beirut.",
+    "metaDescription": "Ali Hamdan, a student, mathematician, robotics educator and electronics hobbyist from Beirut.",
     "imageFolder": "images/",
     "logoText": "AliHamdan.exe",
     "email": "alihamdan.exe@gmail.com",
@@ -50,17 +50,20 @@
       "label": "Track Record",
       "title": "Achievements",
       "items": [
-        { "icon": "trophy", "title": "ARC 9 — 1st Place & International Qualifier", "text": "Won first place in Open Sumo and qualified for the Japanese International Finals." },
-        { "icon": "medal", "title": "WRO — 3rd Place & International Qualifier", "text": "Third place in Autonomous Driving Car and qualified for the Italian Finals." },
-        { "icon": "award", "title": "ARC 10 — 4th Place & Best Design Award", "text": "Placed 4th in Open Sumo while earning the Best Design Award." },
-        { "icon": "robot", "title": "ARC 5 — Makeblock Challenge Participant", "text": "Participated in the Makeblock challenge in 2019." },
-        { "icon": "medal", "title": "MC² — 3rd Place in Sumo Category", "text": "Third place at Al Mahdi Schools Robotics Competition." },
+        { "icon": "trophy", "title": "ARC 9  1st Place & International Qualifier", "text": "Won first place in Open Sumo and qualified for the Japanese International Finals." },
+        { "icon": "medal", "title": "WRO  3rd Place & International Qualifier", "text": "Third place in Autonomous Driving Car and qualified for the Italian Finals." },
+        { "icon": "award", "title": "ARC 10  4th Place & Best Design Award", "text": "Placed 4th in Open Sumo while earning the Best Design Award." },
+        { "icon": "award", "title": "LYEC 2026  Participation", "text": "Pitched the idea of Signbridge as leader of the participating team." },
+        { "icon": "robot", "title": "ARC 5  Makeblock Challenge Participant", "text": "Participated in the Makeblock challenge in 2019." },
+        { "icon": "medal", "title": "MC²  3rd Place in Sumo Category", "text": "Third place at Al Mahdi Schools Robotics Competition." },
         { "icon": "sigma", "title": "4th Best Math Student in Beirut", "text": "Ranked 4th out of 53 top mathematics students across Beirut." },
         { "icon": "star", "title": "1,100,000+ Khan Academy Energy Points", "text": "Over one million points through consistent self-directed learning." },
         { "icon": "mic", "title": "Public Speaking Contest Winner", "text": "Won a competitive public speaking contest." },
         { "icon": "book", "title": "Straight-A Student", "text": "Perfect academic record throughout high school." },
-        { "icon": "tent", "title": "70 Robotics Sessions — AMA Summer Camp", "text": "Led sessions covering WeDo, Motor 3.0, and Arduino programming." },
+        { "icon": "flask", "title": "Founder of an Educational Platform", "text": "Science Anecdotes, an open platfrom for students to connect and upload their science works." },
+        { "icon": "tent", "title": "70 Robotics Sessions at AMA Summer Camp", "text": "Led sessions covering WeDo, Motor 3.0, and Arduino programming." },
         { "icon": "flask", "title": "STEAM Table at Kalimat Branch Opening", "text": "Hosted a science and technology table at the opening ceremony." },
+        { "icon": "star", "title": "Mentorship of over 15 Students", "text": "Passed down the culture of helping young and talented students to develop skills and accomplichements." }
         { "icon": "cube", "title": "Chess Player & Rubik's Cube Solver", "text": "Active chess player and Rubik's cube solver." }
       ]
     },
@@ -78,10 +81,14 @@
       "galleryLabel": "Projects Gallery",
       "projects": [
         { "title": "ARC 9 Sumo Robot", "image": "lab-arc9-sumo.jpg" },
+        { "title": "ESP Based FPV Car", "image": "esp-based-fpv-car.jpg" },
+        { "title": "FPV Drive Conroller V5", "image": "fpv-drive-controller-v5.jpg" },
         { "title": "Project Car", "image": "lab-project-car.jpg" },
         { "title": "Transmitter V1", "image": "lab-transmitter-v1.jpg" },
         { "title": "WRO Autonomous Car", "image": "lab-wro-autonomous-car.jpg" },
         { "title": "5V Regulators", "image": "lab-5v-regulators.jpg" },
+        { "title": "FPV Drive Controller V3", "image": "fpv-drive-controller-v3.jpg" },
+        { "title": "FPV Drive Controller V1", "image": "lfpv-driver-controller-v1.jpg" },
         { "title": "Receiver V1", "image": "lab-receiver-v1.jpg" },
         { "title": "ARC 10 Sumo Robot", "image": "lab-arc10-sumo.jpg" },
         { "title": "Receiver V2", "image": "lab-receiver-v2.jpg" },
@@ -137,7 +144,7 @@
       "imageAlt": "Science Anecdotes logo",
       "imageFit": "contain",
       "description": [
-        "**Write one line here about what Science Anecdotes is.** Then a few sentences about who it is for, what readers can find there, and why you started it.",
+        "**An open free platform dedicated to showcase your science research and ideas.** The platform helps passionate students display works and connect with those who have published other works too. This provides a safe space to connect with the right members of the community who are also passionate in a similar field. ",
         "Read it on [Science Anecdotes](https://scienceanecdotes.github.io)."
       ]
     },
@@ -156,7 +163,7 @@
         { "icon": "sigma", "title": "Math Summaries", "text": "Condensed summaries of mathematics topics", "link": "https://drive.google.com/drive/folders/1mVblReHpn0RhUc5cYPhmiOlzuSOjxXiY", "color": "#d4edda" },
         { "icon": "car", "title": "Project Car", "text": "Files and references for the autonomous car project", "link": "https://drive.google.com/drive/folders/1BgE2ycWwVBGRP6kkCXECtyrp0XJDWZZ3", "color": "#b3d9f2" },
         { "icon": "pencil", "title": "SAT Resources", "text": "Study materials and practice for the SAT exam", "link": "https://drive.google.com/drive/folders/1z99sSgbam7FdcHxCP5VlLDOUVjYlsgKY", "color": "#c5d8f0" },
-        { "icon": "school", "title": "School Summaries", "text": "Subject summaries from school coursework", "link": "https://drive.google.com/drive/folders/1Oycee3017iGQeXjAwmGaGhHnZOn09Mvj", "color": "#fde8e8" }
+        { "icon": "school", "title": "School Summaries", "text": "Subject summaries from school coursework", "link": "https://drive.google.com/drive/folders/1Oycee3017iGQeXjAwmGaGhHnZOn09Mvj", "color": "#c5d8f0" }
       ]
     },
 
@@ -185,7 +192,7 @@
       "image": "collaboration.jpg",
       "imageAlt": "Collaboration",
       "description": [
-        "**Write here, in your own words, what kind of collaborations you are open to.** Mention the kind of people, projects or organisations you would like to work with.",
+        "**I am more than open to collaborate!** I can work with you if you are into math, electroincs, technical hobbies, organisations, sponsors and startups.",
         "If you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
       ]
     },
