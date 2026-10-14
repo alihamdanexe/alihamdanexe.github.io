@@ -58,13 +58,16 @@
         { "icon": "medal", "title": "MC²  3rd Place in Sumo Category", "text": "Third place at Al Mahdi Schools Robotics Competition." },
         { "icon": "sigma", "title": "4th Best Math Student in Beirut", "text": "Ranked 4th out of 53 top mathematics students across Beirut." },
         { "icon": "star", "title": "1,100,000+ Khan Academy Energy Points", "text": "Over one million points through consistent self-directed learning." },
-        { "icon": "mic", "title": "Public Speaking Contest Winner", "text": "Won a competitive public speaking contest." },
+        { "icon": "star", "title": "Calculus Speedrunner", "text": "Over 750 hours covering Calculus 1,2 and 3, linear algebra, finite calculus and differentail equations." },
+        { "icon": "mic", "title": "Public Speaking Contest Winner", "text": "Won a competitive public speaking contest among other students." },
+        { "icon": "award", "title": "2 Time Kangaroo Math Participant", "text": "Competed and shared in the Kangaroo math competition in 9th and 10th grade." },
         { "icon": "book", "title": "Straight-A Student", "text": "Perfect academic record throughout high school." },
         { "icon": "flask", "title": "Founder of an Educational Platform", "text": "Science Anecdotes, an open platfrom for students to connect and upload their science works." },
         { "icon": "tent", "title": "70 Robotics Sessions at AMA Summer Camp", "text": "Led sessions covering WeDo, Motor 3.0, and Arduino programming." },
-        { "icon": "flask", "title": "STEAM Table at Kalimat Branch Opening", "text": "Hosted a science and technology table at the opening ceremony." },
+        { "icon": "flask", "title": "STEAM Table at Kalimat Branch Opening", "text": "Hosted a science and technology table at the opening ceremony and another at the exhibition of Earth's Production." },
+        { "icon": "tent", "title": "20 STEAM Sessions at Klimat Organisation", "text": "Led sessions covering science and simplified technology concepts through activities for kids." },
         { "icon": "star", "title": "Mentorship of over 15 Students", "text": "Passed down the culture of helping young and talented students to develop skills and accomplichements." },
-        { "icon": "cube", "title": "Chess Player & Rubik's Cube Solver", "text": "Active chess player and Rubik's cube solver." }
+        { "icon": "cube", "title": "HobbyMaxxing", "text": "Active chess player, Rubik's cube and Sudoku solver, Tennis player and an artist who draws cars." }
       ]
     },
 
@@ -193,7 +196,7 @@
       "imageAlt": "Collaboration",
       "description": [
         "**I am more than open to collaborate!** I can work with you if you are into math, electroincs, technical hobbies, organisations, sponsors and startups.",
-        "This project specifically was in collaboration with students from the University of Pennsylvania, so if you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
+        "This project specifically was a collaboration with students from the University of Pennsylvania, so if you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
       ]
     },
 
