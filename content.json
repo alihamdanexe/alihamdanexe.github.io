@@ -81,7 +81,7 @@
       "galleryLabel": "Projects Gallery",
       "projects": [
         { "title": "ARC 9 Sumo Robot", "image": "lab-arc9-sumo.jpg" },
-        { "title": "ESP Based FPV Car", "image": "esp-based-fpv-car.jpg" },
+        { "title": "ESP Based FPV Car", "image": "collaboration.jpg" },
         { "title": "FPV Drive Conroller V5", "image": "fpv-drive-controller-v5.jpg" },
         { "title": "Project Car", "image": "lab-project-car.jpg" },
         { "title": "Transmitter V1", "image": "lab-transmitter-v1.jpg" },
