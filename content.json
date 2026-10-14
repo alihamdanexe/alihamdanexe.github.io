@@ -140,7 +140,7 @@
       "aliases": ["science-anecdotes", "science", "founder"],
       "label": "Founder",
       "title": "Founder of Science Anecdotes",
-      "image": "science-anecdotes-logo.png",
+      "image": "science-anecdotes-logo.jpg",
       "imageAlt": "Science Anecdotes logo",
       "imageFit": "contain",
       "description": [
@@ -193,7 +193,7 @@
       "imageAlt": "Collaboration",
       "description": [
         "**I am more than open to collaborate!** I can work with you if you are into math, electroincs, technical hobbies, organisations, sponsors and startups.",
-        "If you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
+        "This project specifically was in collaboration with students from the University of Pennsylvania, so if you have an idea, [send me an email](mailto:{email}?subject=Collaboration) and let's talk."
       ]
     },
 
